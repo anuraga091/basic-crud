@@ -15,6 +15,7 @@ function TaskItem({ id, title, description, priority, completed }) {
 
   const handleDelete = () => {
     dispatch(removeTask(id));
+    toast.error("Task deleted!");
   };
 
   const handleEdit = () => {
