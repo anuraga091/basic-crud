@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { generateId } from '../../utils/generatorFunctions';
 
 export const tasksSlice = createSlice({
   name: 'tasks',
@@ -11,18 +10,13 @@ export const tasksSlice = createSlice({
       reducer(state, action) {
         state.tasks.push(action.payload);
       },
-      prepare(title, description) {
-        return {
-          payload: {
-            id: generateId(),
-            title,
-            description,
-          },
-        };
-      },
     },
     removeTask: (state, action) => {
       state.tasks = state.tasks.filter(task => task.id !== action.payload);
+    },
+    toggleComplete: (state, action) => {
+      const index = state.tasks.findIndex(task => task.id === action.payload);
+      state.tasks[index].completed = !state.tasks[index].completed;
     },
     editTask: (state, action) => {
       const index = state.tasks.findIndex(task => task.id === action.payload.id);
@@ -31,6 +25,6 @@ export const tasksSlice = createSlice({
   },
 });
 
-export const { addTask, removeTask, editTask } = tasksSlice.actions;
+export const { addTask, removeTask, editTask, toggleComplete } = tasksSlice.actions;
 
 export default tasksSlice.reducer;
