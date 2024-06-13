@@ -114,7 +114,7 @@ function TaskItem({ id, title, description, priority, completed }) {
             </button>
             <button
               onClick={handleCompletionToggle}
-              className={`bg-${completed ? 'green' : 'gray'}-500 hover:bg-${completed ? 'green' : 'gray'}-700 text-white py-2 px-4 rounded`}
+              className={`bg-${completed ? 'lime' : 'gray'}-500 hover:bg-${completed ? 'lime' : 'gray'}-700 text-white py-2 px-4 rounded`}
             >
               {completed ? 'Mark as Incomplete' : 'Mark as Complete'}
             </button>
