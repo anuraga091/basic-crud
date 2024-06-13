@@ -43,7 +43,12 @@ function TaskItem({ id, title, description, priority, completed }) {
 
   const handleCompletionToggle = () => {
     dispatch(toggleComplete(id));
-    toast.success("Task Completed, you can see in completed tab");
+    if (!completed){
+      toast.success("Task Completed, you can see in completed tab");
+    } else {
+      toast.success("Task changed to not completed");
+
+    }
   };
 
   return (
@@ -114,7 +119,7 @@ function TaskItem({ id, title, description, priority, completed }) {
             </button>
             <button
               onClick={handleCompletionToggle}
-              className={`bg-${completed ? 'lime' : 'gray'}-500 hover:bg-${completed ? 'lime' : 'gray'}-700 text-white py-2 px-4 rounded`}
+              className={`bg-${completed ? 'blue' : 'gray'}-500 hover:bg-${completed ? 'blue' : 'gray'}-700 text-white py-2 px-4 rounded`}
             >
               {completed ? 'Mark as Incomplete' : 'Mark as Complete'}
             </button>
